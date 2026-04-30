@@ -1,0 +1,110 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background: #081b29;
+        color: #ededed;
+    }
+
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 10%;
+        background: transparent;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+    }
+
+    .logo {
+        position: relative;
+        font-size: 25px;
+        opacity: 70%;
+        color: black;
+        text-decoration: none;
+        font-weight: 600;
+
+    }
+
+    .logo::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        animation: showRight 1s ease forwards;
+        animation-delay: .5s;
+    }
+
+    .navbar a {
+        font-size: 20px;
+        color: #fff4f4;
+        text-decoration: none;
+        font-weight: 500;
+        margin-left: 35px;
+        transition: .3s;
+        font-weight: 400;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+        color: #f00000;
+    }
+
+    .home {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        padding: 0 10%;
+        color: black;
+        justify-content: flex-start;
+    }
+
+    .home-contact {
+        max-width: 400px;
+    }
+
+    .home-contact p {
+        text-align: left;
+        position: relative;
+        font-size: 16px;
+        padding: 9px;
+        margin-right: auto;
+        font-size: large;
+
+    }
+
+    .home-contact p::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 60%;
+        background: #ffffff;
+        animation: showRight 1s ease forwards;
+        animation-delay: 1.5s;
+    }
+
+    .home-contact p {
+        display: 25px;
+        text-align: left;
+        justify-content: left;
+    }
+
+    @keyframes showRight {
+        100% {
+            width: 0;
+        }
+    }

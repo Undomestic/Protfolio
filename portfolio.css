@@ -1,0 +1,58 @@
+/* Overrides for Portfolio page */
+body {
+    background: #081b29;
+}
+
+.skills .h2 {
+    position: relative;
+}
+
+.skills {
+    padding-top: 80px;
+    position: relative;
+    font-size: 25px;
+    color: #ededed;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+}
+
+.skill-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.skill-name {
+    width: 120px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #222;
+    margin-right: 20px;
+    text-align: left;
+}
+
+.bar-track {
+    flex: 1;
+    height: 12px;
+    background: #e0e0e0;
+    border-radius: 6px;
+    margin-right: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: #4be381;
+    border-radius: 6px 0 0 6px;
+    transition: width 1s;
+}
+
+.skill-percent {
+    width: 50px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #222;
+    text-align: right;
+}

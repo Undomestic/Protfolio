@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Jyotiraditya Singh</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .projects-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 150px 10% 80px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            position: relative;
+        }
+
+        .projects-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(0,171,240,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        }
+
+        .projects-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .projects-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #00abf0, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .projects-hero p {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 10% 100px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: .4s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #00abf0, #00ff88);
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(0, 171, 240, 0.2);
+            border-color: rgba(0, 171, 240, 0.3);
+        }
+
+        .project-number {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.05);
+            line-height: 1;
+        }
+
+        .project-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #00abf0, #00ff88);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0, 171, 240, 0.3);
+        }
+
+        .project-icon i {
+            font-size: 35px;
+            color: white;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            font-size: 1rem;
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .project-tech span {
+            background: rgba(0, 171, 240, 0.15);
+            color: #00abf0;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 171, 240, 0.2);
+        }
+
+        .project-features {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+
+        .project-features h4 {
+            color: #00abf0;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .project-features ul li {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            padding-left: 22px;
+            position: relative;
+        }
+
+        .project-features ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #00ff88;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(90deg, #00abf0, #00a0dd);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .3s;
+            margin-top: auto;
+            box-shadow: 0 5px 20px rgba(0, 171, 240, 0.3);
+        }
+
+        .project-link:hover {
+            background: linear-gradient(90deg, #0099cc, #0088bb);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 171, 240, 0.4);
+        }
+
+        .project-link i {
+            font-size: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .projects-hero {
+                min-height: 50vh;
+                padding: 130px 5% 60px;
+            }
+
+            .projects-hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .projects-hero p {
+                font-size: 1.1rem;
+            }
+
+            .projects-grid {
+                gap: 30px;
+                padding: 0 5% 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .projects-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .projects-hero p {
+                font-size: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                padding: 0 4% 60px;
+            }
+
+            .project-card {
+                padding: 30px;
+            }
+
+            .project-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .project-icon i {
+                font-size: 28px;
+            }
+
+            .project-title {
+                font-size: 1.3rem;
+            }
+
+            .project-number {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-hero {
+                padding: 110px 4% 40px;
+            }
+
+            .projects-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .project-card {
+                padding: 25px;
+            }
+
+            .project-features {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Jyotiraditya<span> Singh</span></a>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="navbar" id="navbar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="Portfolio.html">Skills</a>
+            <a href="Portfolio.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="projects-hero">
+        <div class="projects-hero-content">
+            <h1>My Projects</h1>
+            <p>Showcasing practical implementations of my technical skills through real-world applications. Each project
+                demonstrates problem-solving abilities and modern development practices.</p>
+        </div>
+    </section>
+
+    <section class="projects-grid">
+        <div class="project-card">
+            <span class="project-number">01</span>
+            <div class="project-icon">
+                <i class='bx bx-shield-quarterly'></i>
+            </div>
+            <h3 class="project-title">Finance Access Control</h3>
+            <p class="project-desc">Built an admin-controlled permission system using Node.js and MySQL. Manages
+                role-based access control (RBAC) with granular permissions -- view, add, edit, and delete -- across
+                multiple user roles.</p>
+            <div class="project-tech">
+                <span>Node.js</span>
+                <span>Express.js</span>
+                <span>MySQL</span>
+                <span>HTML</span>
+                <span>CSS</span>
+            </div>
+            <div class="project-features">
+                <h4><i class='bx bx-check'></i> Key Features</h4>
+                <ul>
+                    <li>Admin panel</li>
+                    <li>Role assignment</li>
+                    <li>Permission matrix</li>
+                    <li>Session management</li>
+                </ul>
+            </div>
+            <a href="https://github.com/Undomestic/Finance-Access-Control" target="_blank" class="project-link">
+                <i class='bx bxl-github'></i> View on GitHub
+            </a>
+        </div>
+
+        <div class="project-card">
+            <span class="project-number">02</span>
+            <div class="project-icon">
+                <i class='bx bx-envelope'></i>
+            </div>
+            <h3 class="project-title">PriorInboX</h3>
+            <p class="project-desc">Automated to-do list generator that connects to email accounts, reads incoming
+                emails, extracts actionable tasks using logic-based parsing, and assigns priority scores based on
+                workload and deadlines.</p>
+            <div class="project-tech">
+                <span>Node.js</span>
+                <span>Express.js</span>
+                <span>Email API</span>
+                <span>JavaScript</span>
+            </div>
+            <div class="project-features">
+                <h4><i class='bx bx-check'></i> Key Features</h4>
+                <ul>
+                    <li>Email parsing</li>
+                    <li>Priority scoring</li>
+                    <li>Task auto-generation</li>
+                    <li>Deadline tracking</li>
+                </ul>
+            </div>
+            <a href="https://github.com/Undomestic/PriorInboX" target="_blank" class="project-link">
+                <i class='bx bxl-github'></i> View on GitHub
+            </a>
+        </div>
+
+        <div class="project-card">
+            <span class="project-number">03</span>
+            <div class="project-icon">
+                <i class='bx bx-store'></i>
+            </div>
+            <h3 class="project-title">E-Commerce Civil Engineering</h3>
+            <p class="project-desc">Full-stack marketplace platform for buying and selling construction materials.
+                Complete e-commerce solution with product listings, shopping cart, order management, and user
+                authentication.</p>
+            <div class="project-tech">
+                <span>Node.js</span>
+                <span>Express.js</span>
+                <span>MySQL</span>
+                <span>HTML</span>
+                <span>CSS</span>
+            </div>
+            <div class="project-features">
+                <h4><i class='bx bx-check'></i> Key Features</h4>
+                <ul>
+                    <li>Product catalog</li>
+                    <li>Cart system</li>
+                    <li>Order management</li>
+                    <li>User login</li>
+                </ul>
+            </div>
+            <a href="https://github.com/Undomestic/E-commerce-civil-engineering-2" target="_blank" class="project-link">
+                <i class='bx bxl-github'></i> View on GitHub
+            </a>
+        </div>
+
+        <div class="project-card">
+            <span class="project-number">04</span>
+            <div class="project-icon">
+                <i class='bx bx-code-alt'></i>
+            </div>
+            <h3 class="project-title">Personal Portfolio</h3>
+            <p class="project-desc">A modern, responsive personal portfolio website showcasing my skills, projects, and professional background. Built with custom CSS animations and a clean, user-friendly interface.</p>
+            <div class="project-tech">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+            </div>
+            <div class="project-features">
+                <h4><i class='bx bx-check'></i> Key Features</h4>
+                <ul>
+                    <li>Responsive design</li>
+                    <li>Smooth animations</li>
+                    <li>Project showcase</li>
+                    <li>Interactive UI</li>
+                </ul>
+            </div>
+            <a href="https://github.com/Undomestic/Protfolio" target="_blank" class="project-link">
+                <i class='bx bxl-github'></i> View on GitHub
+            </a>
+        </div>
+    </section>
+    <script src="pscript.js"></script>
+</body>
+
+</html>
