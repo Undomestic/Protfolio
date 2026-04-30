@@ -436,6 +436,7 @@ body{
         height: 100vh;
         background: rgba(8, 27, 41, 0.95);
         backdrop-filter: blur(20px);
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
