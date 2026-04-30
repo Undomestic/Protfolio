@@ -18,38 +18,28 @@ if (document.querySelector('.skills-section')) {
 
 // Add scroll animations
 const observerOptions = {
-    threshold: 0.2
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-// Observe skill cards
-document.querySelectorAll('.skill-card').forEach(card => {
+// Observe skill cards and project cards
+document.querySelectorAll('.skill-card, .project-card').forEach((card, index) => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px)';
-    card.style.transition = 'all 0.6s ease';
+    const delay = (index % 3) * 0.15;
+    card.style.transition = `all 0.6s ease ${delay}s`;
     observer.observe(card);
 });
-
-// Apply animation when visible
-const applyAnimation = () => {
-    document.querySelectorAll('.skill-card').forEach((card, index) => {
-        if (card.classList.contains('animate')) {
-            setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, index * 150);
-        }
-    });
-};
-
-document.addEventListener('DOMContentLoaded', applyAnimation);
 
 // Smooth scroll for navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
